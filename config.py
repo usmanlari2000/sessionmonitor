@@ -4,7 +4,7 @@ from openai import OpenAI
 
 load_dotenv()
 
-REQUIRED_VARS = ["OPENAI_API_KEY", "EMAIL_FROM", "EMAIL_TO", "EMAIL_APP_PASSWORD", "MONGODB_URI", "MONGODB_DB"]
+REQUIRED_VARS = ["OPENAI_API_KEY", "EMAIL_FROM", "EMAIL_TO", "EMAIL_APP_PASSWORD", "MONGODB_URI", "MONGODB_DB", "INACTIVITY_SECONDS"]
 missing = [v for v in REQUIRED_VARS if not os.getenv(v)]
 
 if missing:
@@ -16,5 +16,6 @@ EMAIL_TO = os.getenv("EMAIL_TO")
 EMAIL_APP_PASSWORD = os.getenv("EMAIL_APP_PASSWORD")
 MONGODB_URI = os.getenv("MONGODB_URI")
 MONGODB_DB = os.getenv("MONGODB_DB")
+INACTIVITY_SECONDS = int(os.getenv("INACTIVITY_SECONDS", 600)) 
 
 client = OpenAI(api_key=OPENAI_API_KEY)

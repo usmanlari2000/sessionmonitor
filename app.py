@@ -1,14 +1,9 @@
-from dotenv import load_dotenv
-import os
+from config import INACTIVITY_SECONDS
 import time
 from database import sessions_col
 from gpt_utils import classify_conversation
 from utils import format_conversation
 from emailer import send_email
-
-load_dotenv()
-
-INACTIVITY_SECONDS = int(os.getenv("INACTIVITY_SECONDS", 600)) 
 
 def process_sessions():
     now = time.time()
